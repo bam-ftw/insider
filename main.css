@@ -1,0 +1,61 @@
+body {
+	/* font-family: 'Exo 2', sans-serif; */
+	/* font-family: 'Share Tech Mono', monospace; */
+	font-family: 'Inconsolata', monospace;
+	background: #000;
+	color: #FFF;
+	text-align: center;
+	margin: auto;
+}
+
+#container {
+	max-width: 640px;
+	margin: auto;
+}
+
+#timer {
+	font-size: 60pt;
+	color: #CCC;
+	cursor: default;
+	margin: 46px 0;
+}
+
+#noun {
+	font-size: 78pt;
+	cursor: default;
+}
+
+#button-container {
+	display: flex;
+}
+
+#button-container-reload {
+	order: 1;
+}
+
+#button-container-eye {
+	order: 2;
+}
+
+#button-container-play {
+	order: 3;
+}
+
+button {
+	/* width: 100%; */
+	background: #DDD;
+	padding: 0px;
+	margin: 15px;
+	border: 0;
+	cursor: pointer;
+	border-radius: 5px;
+}
+
+button>span {
+	display:block;
+	padding: 10px;
+}
+
+#start_stop {
+	background: #FFF;
+}
