@@ -18,11 +18,11 @@ function main() {
 }
 
 function onDecreaseGameDuration() {
+	gameState.defaultRoundDuration -= 30
+
 	if (gameState.defaultRoundDuration <= 60) {
 		gameState.defaultRoundDuration = 60
 	}
-
-	gameState.defaultRoundDuration -= 30
 
 	if (!gameState.bIsRunning) {
 		gameState.secondsLeft = gameState.defaultRoundDuration
@@ -32,6 +32,8 @@ function onDecreaseGameDuration() {
 }
 
 function onIncreaseGameDuration() {
+	gameState.defaultRoundDuration += 30
+
 	if (gameState.defaultRoundDuration >= 600) {
 		gameState.defaultRoundDuration = 600
 	}
@@ -40,7 +42,7 @@ function onIncreaseGameDuration() {
 		gameState.secondsLeft = gameState.defaultRoundDuration
 	}
 
-	gameState.defaultRoundDuration += 30
+
 	refreshElements()
 }
 
