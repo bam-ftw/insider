@@ -57,3 +57,12 @@ button>span {
 #start_stop {
 	background: #FFF;
 }
+
+.round-duration-buttons {
+	margin: 20px 0;
+}
+
+.round-duration-buttons button {
+	font-size: 36px;
+	padding: 4px 20px;
+}

@@ -5,15 +5,44 @@ const gameState = {
 	secondsLeft: 300,
 	timeoutId: null,
 	bIsRunning: false,
+	defaultRoundDuration: 240,
 }
 
 function main() {
 	document.getElementById('reload').onclick = onReloadClicked
 	document.getElementById('start_stop').onclick = onStartStopClicked
 	document.getElementById('show_hide').onclick = onShowHideClicked
+	document.getElementById('btn-minus').onclick = onDecreaseGameDuration
+	document.getElementById('btn-plus').onclick = onIncreaseGameDuration
 	onReloadClicked()
 }
 
+function onDecreaseGameDuration() {
+	if (gameState.defaultRoundDuration <= 60) {
+		gameState.defaultRoundDuration = 60
+	}
+
+	gameState.defaultRoundDuration -= 30
+
+	if (!gameState.bIsRunning) {
+		gameState.secondsLeft = gameState.defaultRoundDuration
+	}
+
+	refreshElements()
+}
+
+function onIncreaseGameDuration() {
+	if (gameState.defaultRoundDuration >= 600) {
+		gameState.defaultRoundDuration = 600
+	}
+
+	if (!gameState.bIsRunning) {
+		gameState.secondsLeft = gameState.defaultRoundDuration
+	}
+
+	gameState.defaultRoundDuration += 30
+	refreshElements()
+}
 
 
 function onStartStopClicked() {
@@ -39,7 +68,7 @@ function onShowHideClicked() {
 function onReloadClicked() {
 	gameState.noun = getRandomNoun()
 	gameState.bVisible = false
-	gameState.secondsLeft = 300
+	gameState.secondsLeft = gameState.defaultRoundDuration
 	gameState.bIsRunning = false
 
 	clearTimoeut()
@@ -76,6 +105,8 @@ function startTimeout() {
 function refreshElements() {
 	document.getElementById('noun').innerText = gameState.bVisible ? gameState.noun : '***'
 	document.getElementById('timer').innerText = secondsToTimeString(gameState.secondsLeft)
+
+	document.getElementById('default-game-duration').innerText = secondsToTimeString(gameState.defaultRoundDuration)
 
 	if (gameState.bIsRunning) {
 		document.getElementById('img-start-stop').setAttribute('src', 'img/pause.svg')
