@@ -31,9 +31,11 @@ function onStartStopClicked() {
 	} else {
 		playSound('audio/begin-start-fight.mp3')
 		gameState.bIsRunning = true
+		gameState.bVisible = false
 		startTimeout()
 	}
 
+	refreshElements()
 }
 
 function onShowHideClicked() {
@@ -44,7 +46,7 @@ function onShowHideClicked() {
 function onReloadClicked() {
 	gameState.noun = getRandomNoun()
 	gameState.bVisible = false
-	gameState.secondsLeft = 20
+	gameState.secondsLeft = 300
 	gameState.bIsRunning = false
 
 	clearTimoeut()
@@ -81,6 +83,18 @@ function startTimeout() {
 function refreshElements() {
 	document.getElementById('noun').innerText = gameState.bVisible ? gameState.noun : '***'
 	document.getElementById('timer').innerText = secondsToTimeString(gameState.secondsLeft)
+
+	if (gameState.bIsRunning) {
+		document.getElementById('img-start-stop').setAttribute('src', 'img/pause.svg')
+	} else {
+		document.getElementById('img-start-stop').setAttribute('src', 'img/play.svg')
+	}
+
+	if (gameState.bVisible) {
+		document.getElementById('img-show-hide').setAttribute('src', 'img/eye-off.svg')
+	} else {
+		document.getElementById('img-show-hide').setAttribute('src', 'img/eye-outline.svg')
+	}
 }
 
 function playSound(path) {
