@@ -4,10 +4,9 @@
 	<title>Insider</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="shortcut icon" href="img/favicon.png">
-	<!-- <link href="https://fonts.googleapis.com/css?family=Exo+2&display=swap" rel="stylesheet"> -->
-	<!-- <link href="https://fonts.googleapis.com/css?family=Share+Tech+Mono&display=swap" rel="stylesheet"> -->
 	<link href="https://fonts.googleapis.com/css?family=Inconsolata:700&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="main.css">
+	<script src="libs/nosleep.js"></script>
 </head>
 <body>
 	<div id="container">
@@ -29,3 +28,11 @@
 	<script src="main.js"></script>
 </body>
 </html>
+
+<script>
+var noSleep = new NoSleep()
+document.addEventListener('click', function enableNoSleep() {
+	document.removeEventListener('click', enableNoSleep, false)
+	noSleep.enable()
+}, false)
+</script>
